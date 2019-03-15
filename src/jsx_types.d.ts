@@ -1,17 +1,20 @@
+type ReProps<T> = {
+  children?: {}
+} & T
 declare namespace JSX {
   interface IntrinsicElements {
-    character: {negate?: boolean}
-    text: {}
-    optional: {}
-    mayRepeat: {lazy?: boolean}
-    repeat: {lazy?: boolean}
-    group: {ignore?: boolean}
-    beginsWith: {}
-    endsWith: {}
-    repeatN: {exactly: number} | {atLeast: number; upTo: number}
-    lookAhead: {negate?: boolean}
-    lookBehind: {negate?: boolean}
-    union: {}
+    character: ReProps<{negate?: boolean}>
+    raw: ReProps<{}>
+    optional: ReProps<{}>
+    mayRepeat: ReProps<{lazy?: boolean}>
+    repeat: ReProps<{lazy?: boolean}>
+    group: ReProps<{ignore?: boolean}>
+    beginsWith: ReProps<{}>
+    endsWith: ReProps<{}>
+    repeatN: ReProps<{exactly: number} | {atLeast: number; upTo: number}>
+    lookAhead: ReProps<{negate?: boolean}>
+    lookBehind: ReProps<{negate?: boolean}>
+    union: ReProps<{}>
     wordBreak: {}
     any: {}
     whiteSpace: {}

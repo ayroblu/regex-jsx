@@ -5,7 +5,7 @@ describe('methods.ts', () => {
   describe('normal', () => {
     const tests: [string, string][] = [
       [
-        r.text([r.wordBreak, r.group([r.union(['hi', 'bye'])]), r.wordBreak]),
+        r.raw([r.wordBreak, r.group([r.union(['hi', 'bye'])]), r.wordBreak]),
         '\\b(hi|bye)\\b',
       ],
     ]
@@ -18,7 +18,7 @@ describe('methods.ts', () => {
   describe('jsx', () => {
     const tests = [
       [
-        <text>
+        <raw>
           {'<'}
           <group>
             <character>a-z</character>
@@ -28,34 +28,34 @@ describe('methods.ts', () => {
           <character negate={true}>/</character>
           <mayRepeat lazy={true} />
           {'>'}
-        </text>,
+        </raw>,
         '<([a-z]+) *[^/]*?>',
       ],
       [
-        <text>
+        <raw>
           <character>a-z</character>
           <mayRepeat />
           just some text
-        </text>,
+        </raw>,
         '[a-z]*just some text',
       ],
       [
-        <text>
+        <raw>
           <repeatN exactly={3}>hi</repeatN>
-        </text>,
+        </raw>,
         'hi{3}',
       ],
       [
-        <text>
+        <raw>
           <wordBreak />
           <group>
             <union>
-              <text>hi</text>
-              <text>bye</text>
+              <raw>hi</raw>
+              <raw>bye</raw>
             </union>
           </group>
           <wordBreak />
-        </text>,
+        </raw>,
         '\\b(hi|bye)\\b',
       ],
     ]

@@ -4,7 +4,7 @@ import {ValueOf, ReFuncs} from './types'
 const functionalRe = mapTextFunctions({
   character: (text: string, {negate}: {negate?: boolean}) =>
     `[${negate ? '^' : ''}${text}]`,
-  text: (text: string) => `${text}`,
+  raw: (text: string) => `${text}`,
   optional: (text: string) => `${text}?`,
   mayRepeat: (text: string, {lazy}: {lazy?: boolean}) =>
     `${text}*${lazy ? '?' : ''}`,
